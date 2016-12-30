@@ -25,11 +25,10 @@ class FormFieldGroup extends Component {
         <Col sm={10}>
           <InputGroup>
             <FormControl 
-              readOnly
               inputRef={ ref => {this.input = ref }} 
-              value={ this.props.value } 
+              defaultValue={ this.props.value } 
               onClick={ () => this.select() }
-              { ...this.props.attrs } 
+              { ...this.props.attrs }
             />
             <InputGroup.Addon onClick={ ()=> this.copy(this.props.value) }>Copy</InputGroup.Addon>
           </InputGroup>
