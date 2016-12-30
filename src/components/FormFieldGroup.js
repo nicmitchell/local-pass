@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
-import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { ControlLabel, FormControl } from 'react-bootstrap';
 
 class FormFieldGroup extends Component {
-
   render() {
     return (
-      <FormGroup controlId={ this.props.id }>
-        <ControlLabel>{ this.props.label }</ControlLabel>
-        <FormControl { ...this.props.fields } />
-      </FormGroup>
+      <div>
+        <ControlLabel>{ this.props.attrs.label }</ControlLabel>
+        <FormControl { ...this.props.attrs } inputRef={ ref => {this.input = ref }} />
+      </div>
     )
   }
 }
 
-export default FormFieldGroup
+export default FormFieldGroup;
+    // return (
+    //   <FormGroup controlId={ this.props.details.id }>
+    //     <ControlLabel>{ this.props.details.label }</ControlLabel>
+    //     <FormControl { ...this.props.details.fields } />
+    //   </FormGroup>
+    // )
+
+// <ControlLabel>Working example with validation</ControlLabel>
+// <FormControl
+//   type="text"
+//   value={this.state.value}
+//   placeholder="Enter text"
+//   onChange={this.handleChange}
+// />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Account from './components/AccountForm';
+import AccountsList from './components/AccountsList';
 import './App.css';
 
 class App extends Component {
@@ -8,8 +8,8 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>Welcome to PassKeeper Thingy</h2>
-          <Account />
         </div>
+        <AccountsList />
       </div>
     );
   }

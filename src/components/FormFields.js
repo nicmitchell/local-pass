@@ -1,6 +1,6 @@
 module.exports = {
   accountName: {
-    id: "accountName",
+    id: "account",
     type: "text",
     label: "Account Name",
     placeholder: "Account Name"
