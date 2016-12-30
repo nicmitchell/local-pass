@@ -8,17 +8,22 @@ class AccountsList extends Component {
   render() {
     return (
       <Row className="account-list">
-        <Col md={4}></Col>
-        <Col md={4}>
+        <Col sm={4}></Col>
+        <Col sm={4}>
           {
             Object
               .keys(sampleData)
               .map((account) => {
-                return <AccountForm key={ account } ref={ (input) => this.input = input } details={ sampleData[account] } fields={ FormFields } />
+                return <AccountForm 
+                  key={ account } 
+                  ref={ (input) => this.input = input } 
+                  details={ sampleData[account] } 
+                  fields={ FormFields } 
+                />
               })
           }
         </Col>
-        <Col md={4}></Col>
+        <Col sm={4}></Col>
       </Row>
     )
   }

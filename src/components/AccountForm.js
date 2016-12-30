@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
-import { FormGroup, ControlLabel, Button } from 'react-bootstrap';
+import { Form, FormGroup, Button } from 'react-bootstrap';
 import FormFieldGroup from './FormFieldGroup';
 
 class Account extends Component {
+  toggleButton(e) {
+    e.preventDefault();
+    console.log('button', this.button);
+    this.button.classList.toggle('active');
+  }
 
   render() {
     return (
-      <div className="account">
-        <FormGroup bsSize="small" controlId={ this.props.details.id }>
-          <ControlLabel></ControlLabel>
-          <form>
-            { 
-              Object
-                .keys(this.props.fields)
-                .map((attr) => {
-                  let key = this.props.fields[attr].id;
-                  return <FormFieldGroup key={ key } attrs={ this.props.fields[attr] } value={ this.props.details[key] } />
-                })
-            }
-            <Button type="submit">Save</Button>
-          </form>
-        </FormGroup>
-      </div>
+      <Form horizontal>
+          { 
+            Object
+              .keys(this.props.fields)
+              .map((attr) => {
+                let key = this.props.fields[attr].id;
+                return <FormGroup key={ key } bsSize="small" controlId={ this.props.details.id }>
+                  <FormFieldGroup 
+                    attrs={ this.props.fields[attr] } 
+                    value={ this.props.details[key] } 
+                  />
+                </FormGroup>
+              })
+          }
+          <Button block type="submit" ref={ (button) => this.button = button } onClick={ (e)=> this.toggleButton(e) }>Save</Button>
+          <hr />
+      </Form>
     )
   }
 }

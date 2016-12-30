@@ -2,7 +2,7 @@ module.exports = {
   accountName: {
     id: "account",
     type: "text",
-    label: "Account Name",
+    label: "Account",
     placeholder: "Account Name"
   },
   email: {
