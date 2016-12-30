@@ -1,30 +1,30 @@
 module.exports = {
   data1: {
-    id: 'Google',
+    account: 'Google',
     email: 'thing@email.com',
     username: 'thing1',
     password: 'terriblepassword'
   },
   data2: {
-    id: 'Faceyspace',
+    account: 'Faceyspace',
     email: 'thing@email.com',
     username: 'thing1',
     password: 'terriblepassword'
   },
   data3: {
-    id: 'Tweetypages',
+    account: 'Tweetypages',
     email: 'thing@email.com',
     username: 'thing1',
     password: 'terriblepassword'
   },
   data4: {
-    id: 'Instastr',
+    account: 'Instastr',
     email: 'thing@email.com',
     username: 'thing1',
     password: 'terriblepassword'
   },
   data5: {
-    id: 'YouMedium',
+    account: 'YouMedium',
     email: 'thing@email.com',
     username: 'thing1',
     password: 'terriblepassword'

@@ -14,7 +14,8 @@ class Account extends Component {
               Object
                 .keys(this.props.fields)
                 .map((attr) => {
-                  return <FormFieldGroup key={ this.props.fields[attr].id } attrs={ this.props.fields[attr] } details={ this.props.details } />
+                  let key = this.props.fields[attr].id;
+                  return <FormFieldGroup key={ key } attrs={ this.props.fields[attr] } value={ this.props.details[key] } />
                 })
             }
             <Button type="submit">Save</Button>
