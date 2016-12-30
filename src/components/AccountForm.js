@@ -7,8 +7,8 @@ class Account extends Component {
   render() {
     return (
       <div className="account">
-        <FormGroup bsSize="small">
-          <ControlLabel>{ this.props.details.id }</ControlLabel>
+        <FormGroup bsSize="small" controlId={ this.props.details.id }>
+          <ControlLabel></ControlLabel>
           <form>
             { 
               Object
