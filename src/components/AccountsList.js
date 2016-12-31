@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Grid } from 'react-bootstrap';
 import AccountForm from './AccountForm';
 import sampleData from '../sample-data.js';
 import FormFields from './FormFields';
@@ -7,24 +7,25 @@ import FormFields from './FormFields';
 class AccountsList extends Component {
   render() {
     return (
-      <Row className="account-list">
-        <Col sm={4}></Col>
-        <Col sm={4}>
-          {
-            Object
-              .keys(sampleData)
-              .map((account) => {
-                return <AccountForm 
-                  key={ account } 
-                  ref={ (input) => this.input = input } 
-                  details={ sampleData[account] } 
-                  fields={ FormFields } 
-                />
-              })
-          }
-        </Col>
-        <Col sm={4}></Col>
-      </Row>
+      <Grid>
+        <Row className="account-list">
+            {
+              Object
+                .keys(sampleData)
+                .map((account) => {
+                  return (
+                    <Col sm={4} xs={6} key={ account }>
+                      <AccountForm 
+                        ref={ (input) => this.input = input } 
+                        details={ sampleData[account] } 
+                        fields={ FormFields } 
+                      />
+                    </Col>
+                  )
+                })
+            }
+        </Row>
+      </Grid>
     )
   }
 }

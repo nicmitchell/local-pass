@@ -20,7 +20,7 @@ class FormFieldGroup extends Component {
     return (
       <div>
         <Col componentClass={ ControlLabel } sm={2}>
-          <ControlLabel>{ this.props.attrs.label }</ControlLabel>
+          { this.props.attrs.label }
         </Col>
         <Col sm={10}>
           <InputGroup>

@@ -40,9 +40,11 @@ class AccountForm extends Component {
                 let value = this.props.details[key];
                 attrs.readOnly = this.state.readOnly;
 
-                return <FormGroup key={ key } bsSize="small" controlId={ this.props.details.id }>
-                  <FormFieldGroup attrs={ attrs } value={ value }/>
-                </FormGroup>
+                return (
+                  <FormGroup key={ key } bsSize="small" controlId={ this.props.details.id }>
+                    <FormFieldGroup attrs={ attrs } value={ value }/>
+                  </FormGroup>
+                )
               })
           }
           <AccountButton saveFields={ this.saveFields.bind(this) } editFields={ this.editFields.bind(this) } readOnly={ this.state.readOnly }/>
