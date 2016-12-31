@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import { ControlLabel, FormControl, InputGroup, Col } from 'react-bootstrap';
+import { FormControl, FormGroup, InputGroup, Col } from 'react-bootstrap';
 
 class FormFieldGroup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      copyText: 'Copy',
+      copyState: null
+    };
+  }
+
   select() {
     this.input.select();
   }
@@ -10,30 +18,55 @@ class FormFieldGroup extends Component {
     this.select();
     try {
       document.execCommand('copy');
-      console.log('Copied to clipboard:', value)
+      this.copySuccess(value);
     } catch (e) {
+      this.copyError(e);
       window.alert('Error trying to copy to clipboard');
     }
   }
 
+  copySuccess(value) {
+    console.log('Copied to clipboard:', value);
+    this.setState({ 
+      copyText: 'Copied',
+      copyState: 'success'
+    });
+    this.resetCopyButton();
+  }
+
+  copyError(e) {
+    console.log('Error copying to clipboard:', e);
+    this.setState({ 
+      copyText: 'Error',
+      copyState: 'error'
+    });
+    this.resetCopyButton();
+  }
+
+  resetCopyButton() {
+    window.setTimeout(() => {
+      this.setState({
+        copyText: 'Copy',
+        copyState: null
+      });
+    }, 2000);
+  }
+
   render() {
     return (
-      <div>
-        <Col componentClass={ ControlLabel } sm={2}>
-          { this.props.attrs.label }
-        </Col>
-        <Col sm={10}>
-          <InputGroup>
+      <Col sm={12}>
+        <FormGroup validationState={ this.state.copyState }>
+          <InputGroup bsSize="small">
             <FormControl 
-              inputRef={ ref => {this.input = ref }} 
+              inputRef={ (ref) => {this.input = ref }} 
               defaultValue={ this.props.value } 
               onClick={ () => this.select() }
               { ...this.props.attrs }
             />
-            <InputGroup.Addon onClick={ ()=> this.copy(this.props.value) }>Copy</InputGroup.Addon>
+            <InputGroup.Addon onClick={ () => this.copy(this.props.value) }>{ this.state.copyText }</InputGroup.Addon>
           </InputGroup>
-        </Col>
-      </div>
+        </FormGroup>
+      </Col>
     )
   }
 }

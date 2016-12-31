@@ -3,7 +3,7 @@ module.exports = {
     id: "account",
     type: "text",
     label: "Account",
-    placeholder: "Account Name"
+    placeholder: "Login URL"
   },
   email: {
     id: "email",

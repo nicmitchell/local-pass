@@ -1,54 +1,59 @@
 import React, { Component } from 'react';
-import { Form, FormGroup } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import FormFieldGroup from './FormFieldGroup';
-import AccountButton from './AccountButton';
 
 class AccountForm extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      details:this.props.details,
-      readOnly: true
+      details: this.props.details,
+      readOnly: true,
+      buttonText: 'Edit'
     };
   }
 
-  toggleActiveState(readOnly) {
-    let state = this.state;
-    state.readOnly = !state.readOnly;
-    this.setState({ state });
+  toggleButton(e) {
+    e.preventDefault();
+
+    if (this.state.readOnly) {
+      this.editFields();
+    } else {
+      this.saveFields();
+    }
   }
 
-  editFields(e) {
-    e.preventDefault();
-    this.toggleActiveState();
+  editFields() {
+    console.log('Edit Fields');
+    this.setState({
+      buttonText: 'Save',
+      readOnly: !this.state.readOnly
+    });
   }
 
-  saveFields(e) {
-    e.preventDefault();
-    this.toggleActiveState();
+  saveFields() {
+    console.log('Save Fields');
+    this.setState({
+      buttonText: 'Edit',
+      readOnly: !this.state.readOnly
+    });
   }
 
   render() {
     return (
       <Form horizontal>
-          { 
-            Object
-              .keys(this.props.fields)
-              .map((attr) => {
-                let attrs = this.props.fields[attr];
-                let key = attrs.id;
-                let value = this.props.details[key];
-                attrs.readOnly = this.state.readOnly;
+        { 
+          Object
+            .keys(this.props.fields)
+            .map((attr) => {
+              let attrs = this.props.fields[attr];
+              let key = attrs.id;
+              let value = this.props.details[key];
+              attrs.readOnly = this.state.readOnly;
 
-                return (
-                  <FormGroup key={ key } bsSize="small" controlId={ this.props.details.id }>
-                    <FormFieldGroup attrs={ attrs } value={ value }/>
-                  </FormGroup>
-                )
-              })
-          }
-          <AccountButton saveFields={ this.saveFields.bind(this) } editFields={ this.editFields.bind(this) } readOnly={ this.state.readOnly }/>
-          <hr />
+              return <FormFieldGroup attrs={ attrs } value={ value } key={ key } controlId={ this.props.details.id }/>
+            })
+        }
+        <Button block bsStyle="primary" type="submit" onClick={ (e) => this.toggleButton(e) } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
       </Form>
     )
   }

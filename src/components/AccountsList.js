@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Grid } from 'react-bootstrap';
+import { Row, Grid } from 'react-bootstrap';
 import AccountForm from './AccountForm';
 import sampleData from '../sample-data.js';
 import FormFields from './FormFields';
@@ -14,13 +14,13 @@ class AccountsList extends Component {
                 .keys(sampleData)
                 .map((account) => {
                   return (
-                    <Col sm={4} xs={6} key={ account }>
+                    <div key={ account } className="account-card">
                       <AccountForm 
                         ref={ (input) => this.input = input } 
                         details={ sampleData[account] } 
                         fields={ FormFields } 
                       />
-                    </Col>
+                    </div>
                   )
                 })
             }
