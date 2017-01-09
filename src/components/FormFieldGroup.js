@@ -6,7 +6,8 @@ class FormFieldGroup extends Component {
     super(props);
     this.state = {
       copyText: 'Copy',
-      copyState: null
+      copyState: null,
+      value: props.value
     };
   }
 
@@ -52,15 +53,20 @@ class FormFieldGroup extends Component {
     }, 2000);
   }
 
+  update() {
+    this.setState({ value: this.input.value });
+  }
+
   render() {
     return (
       <Col sm={12}>
         <FormGroup validationState={ this.state.copyState }>
           <InputGroup bsSize="small">
             <FormControl 
-              inputRef={ (ref) => {this.input = ref }} 
-              defaultValue={ this.props.value } 
+              inputRef={ (ref) => { this.input = ref }} 
+              defaultValue={ this.state.value } 
               onClick={ () => this.select() }
+              onChange={ () => this.update() }
               { ...this.props.attrs }
             />
             <InputGroup.Addon onClick={ () => this.copy(this.props.value) }>{ this.state.copyText }</InputGroup.Addon>

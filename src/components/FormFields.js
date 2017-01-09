@@ -1,5 +1,5 @@
 module.exports = {
-  accountName: {
+  account: {
     id: "account",
     type: "text",
     label: "Account",

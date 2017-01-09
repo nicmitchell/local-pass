@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import FormFieldGroup from './FormFieldGroup';
+import DataAdapter from '../DataAdapter';
 
 class AccountForm extends Component {
   constructor(props) {
     super(props);
+    this.data = new DataAdapter();
+    this.fields = props.fields;
+    this.inputRefs = {},
     this.state = { 
-      details: this.props.details,
+      values: props.values,
       readOnly: true,
       buttonText: 'Edit'
     };
@@ -32,10 +36,20 @@ class AccountForm extends Component {
 
   saveFields() {
     console.log('Save Fields');
+    let values = this.getFieldValues();
     this.setState({
       buttonText: 'Edit',
-      readOnly: !this.state.readOnly
+      readOnly: !this.state.readOnly,
+      values: values
     });
+  }
+
+  getFieldValues() {
+    return Object
+      .keys(this.inputRefs)
+      .map((input) => {
+        return this.inputRefs[input].state.value;
+      });
   }
 
   render() {
@@ -47,10 +61,16 @@ class AccountForm extends Component {
             .map((attr) => {
               let attrs = this.props.fields[attr];
               let key = attrs.id;
-              let value = this.props.details[key];
+              let value = this.state.values[key];
               attrs.readOnly = this.state.readOnly;
 
-              return <FormFieldGroup attrs={ attrs } value={ value } key={ key } controlId={ this.props.details.id }/>
+              return <FormFieldGroup 
+                attrs={ attrs } 
+                value={ value } 
+                key={ key } 
+                controlId={ this.state.values.id } 
+                ref={ (input) => this.inputRefs[attr] = input } 
+              />
             })
         }
         <Button block bsStyle="primary" type="submit" onClick={ (e) => this.toggleButton(e) } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
