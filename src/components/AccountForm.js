@@ -54,24 +54,21 @@ class AccountForm extends Component {
 
   render() {
     return (
-      <Form horizontal>
+      <Form horizontal className="account-card">
         { 
-          Object
-            .keys(this.props.fields)
-            .map((attr) => {
-              let attrs = this.props.fields[attr];
-              let key = attrs.id;
-              let value = this.state.values[key];
-              attrs.readOnly = this.state.readOnly;
+          this.props.fields.map((attrs) => {
+            let key = attrs.id;
+            let value = this.state.values[key];
+            attrs.readOnly = this.state.readOnly;
 
-              return <FormFieldGroup 
-                attrs={ attrs } 
-                value={ value } 
-                key={ key } 
-                controlId={ this.state.values.id } 
-                ref={ (input) => this.inputRefs[attr] = input } 
-              />
-            })
+            return <FormFieldGroup 
+              attrs={ attrs } 
+              value={ value } 
+              key={ key } 
+              controlId={ this.state.values.id } 
+              ref={ (input) => this.inputRefs[key] = input } 
+            />
+          })
         }
         <Button block bsStyle="primary" type="submit" onClick={ (e) => this.toggleButton(e) } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
       </Form>

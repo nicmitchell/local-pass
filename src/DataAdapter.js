@@ -4,12 +4,12 @@ import localforage from 'localforage';
 class DataAdapter {
   constructor() {
     this.sampleData = sampleData;
-    // this.exportToLocalStorage(this.sampleData);
+    this.exportToLocalStorage(this.sampleData);
   }
 
   exportToLocalStorage(data) {
     data.forEach((account, idx, coll) => {
-      localforage.setItem(`pass-${idx}`, JSON.stringify(account));
+      localforage.setItem(`pk{idx}`, account);
     });
   }
 

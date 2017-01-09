@@ -9,16 +9,8 @@ class AccountsList extends Component {
     super(props);
     this.data = new DataAdapter();
     this.state = {
-      accounts: []
+      accounts: this.data.getAccounts()
     };
-  }
-
-  componentDidMount() {
-    this.getData();
-  }
-
-  getData() {
-    this.setState({ accounts: this.data.getAccounts() });
   }
 
   render() {
@@ -26,19 +18,17 @@ class AccountsList extends Component {
       <Grid>
         <Row className="account-list">
             {
-              Object
-                .keys(this.state.accounts)
-                .map((account) => {
-                  return (
-                    <div key={ account } className="account-card">
-                      <AccountForm 
-                        ref={ (input) => this.input = input } 
-                        values={ this.state.accounts[account] } 
-                        fields={ FormFields } 
-                      />
-                    </div>
-                  )
-                })
+              this.state.accounts.map((account, idx) => {
+                return (
+                  <AccountForm 
+                    key={ idx }
+                    idx={ idx }
+                    ref={ (input) => this.input = input } 
+                    values={ account } 
+                    fields={ FormFields } 
+                  />
+                )
+              })
             }
         </Row>
       </Grid>
