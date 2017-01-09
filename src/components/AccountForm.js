@@ -8,7 +8,7 @@ class AccountForm extends Component {
     super(props);
     this.data = new DataAdapter();
     this.fields = props.fields;
-    this.inputRefs = {},
+    this.inputRefs = {};
     this.state = { 
       values: props.values,
       readOnly: true,

@@ -9,10 +9,17 @@ class AccountsList extends Component {
     super(props);
     this.data = new DataAdapter();
     this.state = {
-      accounts: this.data.getAccounts()
+      accounts: []
     };
   }
 
+  componentWillMount() {
+    this.data.getAccounts()
+      .then((data) => {
+        console.log('got data');
+        this.setState({ accounts: data });
+      })
+  }
   render() {
     return (
       <Grid>

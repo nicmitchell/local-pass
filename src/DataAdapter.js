@@ -3,19 +3,37 @@ import localforage from 'localforage';
 
 class DataAdapter {
   constructor() {
-    this.sampleData = sampleData;
-    this.exportToLocalStorage(this.sampleData);
+    // localforage.clear();
+    this.data = [];
   }
 
   exportToLocalStorage(data) {
     data.forEach((account, idx, coll) => {
-      localforage.setItem(`pk{idx}`, account);
+      localforage.setItem(idx.toString(), account)
+        .then((val) => {
+          console.log('Exporting sample data success', val);
+        })
+        .catch((e) => {
+          console.log('Exporting sample data error', e);
+        })
     });
   }
 
   getAccounts() {
-    console.log('called getAccounts');
-    return this.sampleData;
+    return new Promise((resolve, reject) =>{
+      if (!localforage.length) {
+        this.data = sampleData;
+        this.exportToLocalStorage(this.data);
+        resolve(this.data);
+      } else {
+        localforage.iterate((account) => {
+          console.log('Retrieving from IndexDB', account);
+          this.data.push(account);
+        }).then(() => {
+          resolve(this.data);
+        })
+      }
+    });
   }
 
   set(data) {
