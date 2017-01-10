@@ -11,6 +11,7 @@ class AccountForm extends Component {
     this.inputRefs = {};
     this.state = { 
       values: props.values,
+      key: props.idx,
       readOnly: true,
       buttonText: 'Edit'
     };
@@ -37,19 +38,23 @@ class AccountForm extends Component {
   saveFields() {
     console.log('Save Fields');
     let values = this.getFieldValues();
+    let key = this.state.key;
     this.setState({
       buttonText: 'Edit',
       readOnly: !this.state.readOnly,
       values: values
     });
+    this.data.set(key, values);
   }
 
   getFieldValues() {
-    return Object
+    let values = {};
+    Object
       .keys(this.inputRefs)
-      .map((input) => {
-        return this.inputRefs[input].state.value;
+      .forEach((input) => {
+        values[input] = this.inputRefs[input].state.value;
       });
+    return values;
   }
 
   render() {

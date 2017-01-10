@@ -20,6 +20,7 @@ class AccountsList extends Component {
         this.setState({ accounts: data });
       })
   }
+
   render() {
     return (
       <Grid>
@@ -28,8 +29,8 @@ class AccountsList extends Component {
               this.state.accounts.map((account, idx) => {
                 return (
                   <AccountForm 
-                    key={ idx }
-                    idx={ idx }
+                    key={ account.key }
+                    idx={ account.key }
                     ref={ (input) => this.input = input } 
                     values={ account } 
                     fields={ FormFields } 

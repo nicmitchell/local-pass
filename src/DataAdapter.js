@@ -26,9 +26,14 @@ class DataAdapter {
         this.exportToLocalStorage(this.data);
         resolve(this.data);
       } else {
-        localforage.iterate((account) => {
+        localforage.iterate((account, key) => {
           console.log('Retrieving from IndexDB', account);
-          this.data.push(account);
+          if(!isNaN(parseInt(key, 10))) {
+            account.key = key;
+            this.data.push(account);
+          } else {
+            localforage.removeItem(key);
+          }
         }).then(() => {
           resolve(this.data);
         })
@@ -36,9 +41,8 @@ class DataAdapter {
     });
   }
 
-  set(data) {
-    console.log(data);
-    localforage.setItem(data);
+  set(key, data) {
+    localforage.setItem(key.toString(), data);
   }
 
   get(key) {
