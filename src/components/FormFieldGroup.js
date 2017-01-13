@@ -10,26 +10,6 @@ class FormFieldGroup extends Component {
     }
   }
 
-  // select = (target) => {
-  //   target.select();
-  // }
-
-  // copy = (input) => {
-  //   // this.select(input);
-  //   const value = input.value;
-  //   try {
-  //     document.execCommand('copy');
-  //     this.copySuccess(value);
-  //   } catch (e) {
-  //     this.copyError(e);
-  //     window.alert('Error trying to copy to clipboard');
-  //   }
-  // }
-  // 
-  select() {
-    this.input.select();
-  }
-
   copy(e, input){
     input.select();
     try {
