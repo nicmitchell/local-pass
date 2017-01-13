@@ -43,15 +43,22 @@ class App extends Component {
   }
 
   updateAccount = (key, values) => {
-   console.log('Update account:', key, 'with:', values);
-   const accounts = { ...this.state.accounts };
-   const previous = accounts[key];
-   const updated = {
-    ...previous,
-    ...values
-   }
-   accounts[key] = updated;
-   this.setState({ accounts }); 
+    console.log('Update account:', key, 'with:', values);
+    const accounts = { ...this.state.accounts };
+    const previous = accounts[key];
+    const updated = {
+      ...previous,
+      ...values
+    }
+    accounts[key] = updated;
+    this.setState({ accounts }); 
+  }
+
+  saveAccount = (key) => {
+    console.log('Saving account:', key);
+    const account = this.state.accounts[key];
+    this.updateAccount(key, { readOnly: true, buttonText: 'Edit' });
+    this.data.set(key, account);
   }
 
   updateInput = (key, account) => {
@@ -66,7 +73,12 @@ class App extends Component {
           <h2>PassKeeper Thingy</h2>
         </div>
         <NewAccount addAccount={ this.addAccount }/>
-        <AccountsList accounts={ this.state.accounts } updateInput={ this.updateInput } updateAccount={ this.updateAccount }/>
+        <AccountsList 
+          accounts={ this.state.accounts } 
+          updateInput={ this.updateInput } 
+          updateAccount={ this.updateAccount }
+          saveAccount={ this.saveAccount }
+        />
       </div>
     );
   }

@@ -29,12 +29,11 @@ class SavedAccount extends Component {
 
   saveFields = (key) => {
     console.log('Save Fields');
-    this.buttonText = 'Edit';
-    this.props.updateAccount(key, { readOnly: true, buttonText: 'Edit' });
+    this.props.saveAccount(key, { readOnly: true, buttonText: 'Edit' });
   }
 
-  updateInput = (values) => {
-    this.props.updateInput(this.idx, values);
+  updateInput = (key, values) => {
+    this.props.updateInput(key, values);
   }
 
   render = () => {

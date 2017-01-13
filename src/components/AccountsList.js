@@ -18,6 +18,7 @@ class AccountsList extends Component {
                     values={ this.props.accounts[key] } 
                     updateInput={ this.props.updateInput }
                     updateAccount={ this.props.updateAccount }
+                    saveAccount={ this.props.saveAccount }
                   />
                 )
               })
