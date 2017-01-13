@@ -19,5 +19,11 @@ module.exports = [
     type: "text",
     label: "Password",
     placeholder: "Password" 
+  }, {
+    id: "notes",
+    type: "textarea",
+    label: "Notes",
+    placeholder: "Notes",
+    componentClass: "textarea"
   }
 ];

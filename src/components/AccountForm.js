@@ -35,7 +35,8 @@ class AccountForm extends Component {
         {
           FormFields.map((field) => {
             return (
-              <FormFieldGroup key={ field.id }
+              <FormFieldGroup 
+                key={ field.id }
                 field={ field }
                 values={ this.props.values }
                 actions={ this.props.actions }

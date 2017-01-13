@@ -10,7 +10,11 @@ class FormFieldGroup extends Component {
     }
   }
 
-  copy(e, input){
+  select = (e) => {
+    e.target.select();
+  }
+
+  copy = (e, input) => {
     input.select();
     try {
       document.execCommand('copy');
@@ -62,16 +66,12 @@ class FormFieldGroup extends Component {
       <FormGroup validationState={ this.state.copyState } key={ `${this.props.values.key}-${name}` }>
         <InputGroup bsSize="small">
           <FormControl
-            name={ this.props.field.name }
-            type="text"
-            label={ this.props.field.label }
-            placeholder={ this.props.field.placeholder }
             inputRef={ (ref) => this[name] = ref } 
             value={ this.props.values[name] } 
-            onClick={ (e) => this.select(e.target) }
+            onClick={ (e) => this.select(e) }
             onChange={ (e) => this.update(e) }
             readOnly={ this.props.values.readOnly }
-            { ...this.props.attrs }
+            { ...this.props.field }
           />
           <InputGroup.Addon onClick={ (e) => this.copy(e, this[name]) } ref={ (button) => this.copyButton = button }>{ this.state.copyText }</InputGroup.Addon>
         </InputGroup>

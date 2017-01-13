@@ -15,7 +15,6 @@ class SavedAccount extends Component {
 
   toggleButton = (e) => {
     e.preventDefault();
-    console.log(e);
     if (this.props.values.readOnly) {
       this.editFields(this.idx);
     } else {
@@ -34,7 +33,7 @@ class SavedAccount extends Component {
     this.props.updateAccount(key, { readOnly: true, buttonText: 'Edit' });
   }
 
-  updateInput(values) {
+  updateInput = (values) => {
     this.props.updateInput(this.idx, values);
   }
 
@@ -42,11 +41,9 @@ class SavedAccount extends Component {
     return (
       <Form horizontal className="account-card" ref={ (form) => this.form = form }>
         <AccountForm
-          // attrs={ attrs } 
           values={ this.props.values } 
           key={ this.props.idx } 
           idx={ this.props.idx } 
-          controlId={ this.props.idx } 
           ref={ (form) => this.form = form }
           handleClick={ this.toggleButton }
           updateInput={ this.updateInput }
