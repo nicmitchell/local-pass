@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
 import FormFieldGroup from './FormFieldGroup';
+import FormFields from './FormFields';
 
 class AccountForm extends Component {
   constructor(props) {
@@ -30,11 +31,19 @@ class AccountForm extends Component {
 
   render = () => {
     return (
-      <FormFieldGroup 
-        values={ this.props.values }
-        actions={ this.props.actions }
-        updateInput={ this.props.updateInput }
-      />
+      <Col sm={12}>
+        {
+          FormFields.map((field) => {
+            return (
+              <FormFieldGroup key={ field.id }
+                field={ field }
+                values={ this.props.values }
+                actions={ this.props.actions }
+                updateInput={ this.props.updateInput }
+              />)
+          })
+        }
+      </Col>
     )
   }
 }
