@@ -16,7 +16,7 @@ module.exports = [
     placeholder: "Username"
   }, {
     id: "password",
-    type: "password",
+    type: "text",
     label: "Password",
     placeholder: "Password" 
   }

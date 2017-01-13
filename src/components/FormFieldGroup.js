@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
-import { FormControl, FormGroup, InputGroup, Col } from 'react-bootstrap';
+import { FormControl, FormGroup, InputGroup, Col, Glyphicon } from 'react-bootstrap';
 
 class FormFieldGroup extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      copyText: 'Copy',
-      copyState: null,
-      value: props.value
-    };
+    this.copyState = null;
   }
 
-  select() {
-    this.input.select();
+  select = (target) => {
+    target.select();
   }
 
-  copy(value){
-    this.select();
+  copy = (input) => {
+    this.select(input);
+    const value = input.value;
     try {
       document.execCommand('copy');
       this.copySuccess(value);
@@ -26,7 +23,7 @@ class FormFieldGroup extends Component {
     }
   }
 
-  copySuccess(value) {
+  copySuccess = (value) => {
     console.log('Copied to clipboard:', value);
     this.setState({ 
       copyText: 'Copied',
@@ -35,7 +32,7 @@ class FormFieldGroup extends Component {
     this.resetCopyButton();
   }
 
-  copyError(e) {
+  copyError = (e) => {
     console.log('Error copying to clipboard:', e);
     this.setState({ 
       copyText: 'Error',
@@ -44,7 +41,7 @@ class FormFieldGroup extends Component {
     this.resetCopyButton();
   }
 
-  resetCopyButton() {
+  resetCopyButton = () => {
     window.setTimeout(() => {
       this.setState({
         copyText: 'Copy',
@@ -53,23 +50,83 @@ class FormFieldGroup extends Component {
     }, 2000);
   }
 
-  update() {
-    this.setState({ value: this.input.value });
+  update = (e) => {
+    console.log(e);
+    const value = e.target.value;
+    const input = e.target.id;
+    const key = this.props.values.key;
+    this.props.updateInput(key, { [input]: value });
   }
 
-  render() {
+  render = () => {
     return (
       <Col sm={12}>
-        <FormGroup validationState={ this.state.copyState }>
+        <FormGroup validationState={ this.copyState }>
           <InputGroup bsSize="small">
-            <FormControl 
-              inputRef={ (ref) => { this.input = ref }} 
-              defaultValue={ this.state.value } 
-              onClick={ () => this.select() }
-              onChange={ () => this.update() }
+            <FormControl
+              id="account"
+              type="text"
+              label="Account"
+              placeholder="Login URL"
+              inputRef={ (ref) => this.account = ref } 
+              value={ this.props.values.account } 
+              onClick={ (e) => this.select(e.target) }
+              onChange={ (e) => this.update(e) }
+              readOnly={ this.props.values.readOnly }
               { ...this.props.attrs }
             />
-            <InputGroup.Addon onClick={ () => this.copy(this.props.value) }>{ this.state.copyText }</InputGroup.Addon>
+            <InputGroup.Addon onClick={ (e) => this.copy(this.account) }>{ this.props.values.copyText }</InputGroup.Addon>
+          </InputGroup>
+        </FormGroup>
+        <FormGroup validationState={ this.copyState }>
+          <InputGroup bsSize="small">
+            <FormControl
+              id="email"
+              type="text"
+              label="Email"
+              placeholder="Email"
+              inputRef={ (ref) => this.email = ref } 
+              value={ this.props.values.email } 
+              onClick={ (e) => this.select(e.target) }
+              onChange={ (e) => this.update(e) }
+              readOnly={ this.props.values.readOnly }
+              { ...this.props.attrs }
+            />
+            <InputGroup.Addon onClick={ (e) => this.copy(this.email) }>{ this.props.values.copyText }</InputGroup.Addon>
+          </InputGroup>
+        </FormGroup>
+        <FormGroup validationState={ this.copyState }>
+          <InputGroup bsSize="small">
+            <FormControl
+              id="username"
+              type="text"
+              label="Username"
+              placeholder="Username"
+              inputRef={ (ref) => this.username = ref } 
+              value={ this.props.values.username } 
+              onClick={ (e) => this.select(e.target) }
+              onChange={ this.update }
+              readOnly={ this.props.values.readOnly }
+              { ...this.props.attrs }
+            />
+            <InputGroup.Addon onClick={ (e) => this.copy(this.username) }>{ this.props.values.copyText }</InputGroup.Addon>
+          </InputGroup>
+        </FormGroup>
+        <FormGroup validationState={ this.copyState }>
+          <InputGroup bsSize="small">
+            <FormControl
+              id="password"
+              type="text"
+              label="Password"
+              placeholder="Password" 
+              inputRef={ (ref) => this.password = ref } 
+              value={ this.props.values.password } 
+              onClick={ (e) => this.select(e.target) }
+              onChange={ this.update }
+              readOnly={ this.props.values.readOnly }
+              { ...this.props.attrs }
+            />
+            <InputGroup.Addon onClick={ () => this.copy(this.password) }>{ this.props.values.copyText }</InputGroup.Addon>
           </InputGroup>
         </FormGroup>
       </Col>
