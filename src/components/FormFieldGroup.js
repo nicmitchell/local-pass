@@ -53,7 +53,6 @@ class FormFieldGroup extends Component {
   }
 
   update = (e) => {
-    console.log(e);
     const value = e.target.value;
     const input = e.target.id;
     const key = this.props.values.key;

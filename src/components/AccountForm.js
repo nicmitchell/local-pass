@@ -15,20 +15,6 @@ class AccountForm extends Component {
     }
   }
 
-  handleClick = (e) => {
-    e.preventDefault();
-    this.props.handleClick(e);
-  }
-
-  getFieldValues = () => {
-    return this.inputRefs.map((input, idx) => {
-      console.log(this.inputRefs);
-      let data = {};
-      data[input.id] = input.state.value;
-      return data;
-    });
-  }
-
   render = () => {
     return (
       <Col sm={12}>
@@ -39,7 +25,6 @@ class AccountForm extends Component {
                 key={ field.id }
                 field={ field }
                 values={ this.props.values }
-                actions={ this.props.actions }
                 updateInput={ this.props.updateInput }
               />)
           })

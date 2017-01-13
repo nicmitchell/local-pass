@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   updateAccount = (key, values) => {
-    console.log('Update account:', key, 'with:', values);
     const accounts = { ...this.state.accounts };
     const previous = accounts[key];
     const updated = {
@@ -55,14 +54,12 @@ class App extends Component {
   }
 
   saveAccount = (key) => {
-    console.log('Saving account:', key);
     const account = this.state.accounts[key];
     this.updateAccount(key, { readOnly: true, buttonText: 'Edit' });
     this.data.set(key, account);
   }
 
   updateInput = (key, account) => {
-    console.log('update input in App.js', ...arguments);
     this.updateAccount(key, account)
   }
 

@@ -23,12 +23,10 @@ class SavedAccount extends Component {
   }
 
   editFields = (key) => {
-    console.log('Edit Fields');
     this.props.updateAccount(key, { readOnly: false, buttonText: 'Save' });
   }
 
   saveFields = (key) => {
-    console.log('Save Fields');
     this.props.saveAccount(key, { readOnly: true, buttonText: 'Edit' });
   }
 
