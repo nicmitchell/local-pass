@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Col } from 'react-bootstrap';
 import FormFieldGroup from './FormFieldGroup';
 
 class AccountForm extends Component {
@@ -29,11 +30,11 @@ class AccountForm extends Component {
 
   render = () => {
     return (
-        <FormFieldGroup 
-          values={ this.props.values }
-          actions={ this.props.actions }
-          updateInput={ this.props.updateInput }
-        />
+      <FormFieldGroup 
+        values={ this.props.values }
+        actions={ this.props.actions }
+        updateInput={ this.props.updateInput }
+      />
     )
   }
 }
