@@ -5,8 +5,6 @@ import AccountForm from './AccountForm';
 class SavedAccount extends Component {
   constructor(props) {
     super(props);
-    this.inputRefs = [];
-    this.idx = this.props.idx;
     this.state = { 
       readOnly: true,
       buttonText: 'Edit'
@@ -16,9 +14,9 @@ class SavedAccount extends Component {
   toggleButton = (e) => {
     e.preventDefault();
     if (this.props.values.readOnly) {
-      this.editFields(this.idx);
+      this.editFields(this.props.idx);
     } else {
-      this.saveFields(this.idx);
+      this.saveFields(this.props.idx);
     }
   }
 
@@ -30,8 +28,8 @@ class SavedAccount extends Component {
     this.props.saveAccount(key, { readOnly: true, buttonText: 'Edit' });
   }
 
-  updateInput = (key, values) => {
-    this.props.updateInput(key, values);
+  handleInputChange = (key, values) => {
+    this.props.handleInputChange(key, values);
   }
 
   render = () => {
@@ -42,9 +40,8 @@ class SavedAccount extends Component {
           key={ this.props.idx } 
           idx={ this.props.idx } 
           ref={ (form) => this.form = form }
-          handleClick={ this.toggleButton }
-          updateInput={ this.updateInput }
-          updateAccount={ this.props.updateAccount }
+          handleInputChange={ this.handleInputChange }
+          showCopyButton={ true }
         />
         <Button block bsStyle="primary" type="submit" name={ this.props.idx } onClick={ (e) => this.toggleButton(e) } ref={ (button) => this.button = button }>{ this.props.values.buttonText }</Button>
       </Form>

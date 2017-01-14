@@ -11,8 +11,11 @@ class App extends Component {
     super();
     this.data = new DataAdapter();
     this.state = {
-      accounts: {}
-      // Example:
+      accounts: {},
+      newAccount: {
+        key: shortid.generate()
+      }
+      // Example account:
       // {
       //  key: 'aasdfuiop'
       //  account: 'Faceyspace',
@@ -34,15 +37,30 @@ class App extends Component {
     this.setState({ accounts });
   }
 
-  addAccount = (account) => {
-    console.log('adding account:', account);
-    const accounts = { ...this.state.accounts };
-    const key = shortid.generate();
-    accounts[key] = account;
-    this.setState({ accounts });
+  resetNewAccount = () => {
+    this.setState({
+      newAccount: {
+        key: shortid.generate()
+      }
+    })
   }
 
-  updateAccount = (key, values) => {
+  addNewAccountToState = (key) => {
+    const accounts = { ...this.state.accounts };
+    const newAccount = this.state.newAccount;
+    accounts[key] = newAccount;
+    this.setState({ accounts });
+    this.saveAccountToStorage(key, newAccount);
+    this.resetNewAccount();
+  }
+
+  saveNewAccount = (key, account) => {
+    const newAccount = this.state.newAccount;
+    this.addNewAccountToState(key);
+    this.saveAccountToStorage(key, newAccount);
+  }
+
+  updateSavedAccount = (key, values) => {
     const accounts = { ...this.state.accounts };
     const previous = accounts[key];
     const updated = {
@@ -53,14 +71,19 @@ class App extends Component {
     this.setState({ accounts }); 
   }
 
-  saveAccount = (key) => {
-    const account = this.state.accounts[key];
-    this.updateAccount(key, { readOnly: true, buttonText: 'Edit' });
-    this.data.set(key, account);
+  saveAccountToStorage = (key, values) => {
+    const account = this.state.accounts[key] || values;
+    this.updateSavedAccount(key, { readOnly: true, buttonText: 'Edit' });
+    this.data.set(key, values);
   }
 
-  updateInput = (key, account) => {
-    this.updateAccount(key, account)
+  updateNewAccount = (key, values) => {
+    const previous = this.state.newAccount;
+    const updated = {
+      ...previous,
+      ...values
+    }
+    this.setState({ newAccount: updated }); 
   }
 
   render = () => {
@@ -69,12 +92,12 @@ class App extends Component {
         <div className="App-header">
           <h2>PassKeeper Thingy</h2>
         </div>
-        <NewAccount addAccount={ this.addAccount }/>
+        <NewAccount saveNewAccount={ this.saveNewAccount } updateNewAccount={ this.updateNewAccount } values={ this.state.newAccount }/>
         <AccountsList 
           accounts={ this.state.accounts } 
-          updateInput={ this.updateInput } 
-          updateAccount={ this.updateAccount }
-          saveAccount={ this.saveAccount }
+          handleInputChange={ this.updateSavedAccount } 
+          updateAccount={ this.updateSavedAccount }
+          saveAccount={ this.saveAccountToStorage }
         />
       </div>
     );

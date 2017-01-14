@@ -4,16 +4,6 @@ import FormFieldGroup from './FormFieldGroup';
 import FormFields from './FormFields';
 
 class AccountForm extends Component {
-  constructor(props) {
-    super(props);
-    this.inputRefs = [];
-    this.state = { 
-      values: this.props.values,
-      key: this.props.idx,
-      readOnly: true,
-      buttonText: 'Edit'
-    }
-  }
 
   render = () => {
     return (
@@ -25,8 +15,10 @@ class AccountForm extends Component {
                 key={ field.id }
                 field={ field }
                 values={ this.props.values }
-                updateInput={ this.props.updateInput }
-              />)
+                handleInputChange={ this.props.handleInputChange }
+                showCopyButton={ this.props.showCopyButton }
+              />
+            )
           })
         }
       </Col>
