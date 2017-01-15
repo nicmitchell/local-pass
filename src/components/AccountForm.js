@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
 import FormFieldGroup from './FormFieldGroup';
-import FormFields from './FormFields';
+import FormFields from '../helpers/FormFields';
 
 class AccountForm extends Component {
-
   render = () => {
     return (
-      <Col sm={12}>
+      <div>
         {
           FormFields.map((field) => {
             return (
@@ -22,7 +21,7 @@ class AccountForm extends Component {
             )
           })
         }
-      </Col>
+      </div>
     )
   }
 }

@@ -72,7 +72,7 @@ class FormFieldGroup extends Component {
             readOnly={ this.props.readOnly }
             { ...this.props.field }
           />
-          { this.props.showCopyButton  && <InputGroup.Addon onClick={ (e) => this.copy(e, this[name]) } ref={ (button) => this.copyButton = button }>{ this.state.copyText }</InputGroup.Addon> }
+          <InputGroup.Addon onClick={ (e) => this.copy(e, this[name]) } ref={ (button) => this.copyButton = button }>{ this.state.copyText }</InputGroup.Addon>
         </InputGroup>
       </FormGroup>
     )

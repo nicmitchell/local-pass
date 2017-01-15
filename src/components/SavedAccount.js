@@ -35,7 +35,7 @@ class SavedAccount extends Component {
 
   render = () => {
     return (
-      <Form horizontal className="account-card" ref={ (form) => this.form = form } onSubmit={ (e) => this.toggleButton(e) } >
+      <Form className="account-card" ref={ (form) => this.form = form } onSubmit={ (e) => this.toggleButton(e) } >
         <AccountForm
           values={ this.props.values } 
           key={ this.props.idx } 

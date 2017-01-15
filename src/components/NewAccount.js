@@ -14,16 +14,17 @@ class NewAccount extends Component {
 
   render = () => {
     return (
-      <Form horizontal className="account-card" ref={ (form) => this.form = form } onSubmit={ (e) => this.saveFields(e) }>
+      <form className="account-card new" ref={ (form) => this.form = form } onSubmit={ (e) => this.saveFields(e) }>
         <AccountForm
           values={ this.props.values } 
           key={ this.props.idx } 
           idx={ this.props.idx } 
           update={ this.update }
           showCopyButton={ false }
+          readOnly={ false }
         />
         <Button block bsStyle="primary" type="submit" ref={ (button) => this.button = button }>Save</Button>
-      </Form>
+      </form>
     )
   }
 }

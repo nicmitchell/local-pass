@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AccountsList from './components/AccountsList';
-import FormFields from './components/FormFields';
-import DataAdapter from './DataAdapter';
+import FormFields from './helpers/FormFields';
+import DataAdapter from './helpers/DataAdapter';
 import shortid from 'shortid';
 import './App.css';
 
