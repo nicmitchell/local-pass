@@ -48,7 +48,7 @@ class App extends Component {
   addNewAccountToState = (key) => {
     const accounts = { ...this.state.accounts };
     const newAccount = this.state.newAccount;
-    accounts[key] = newAccount;
+    accounts[key] = Object.assign(newAccount, { readOnly: true, buttonText: 'Edit' });
     this.setState({ accounts });
     this.saveAccountToStorage(key, newAccount);
     this.resetNewAccount();
@@ -58,6 +58,11 @@ class App extends Component {
     const newAccount = this.state.newAccount;
     this.addNewAccountToState(key);
     this.saveAccountToStorage(key, newAccount);
+  }
+
+  saveSavedAccount = (key, values) => {
+    this.updateSavedAccount(key, { readOnly: true, buttonText: 'Edit' });
+    this.data.set(key, values);
   }
 
   updateSavedAccount = (key, values) => {
@@ -73,7 +78,6 @@ class App extends Component {
 
   saveAccountToStorage = (key, values) => {
     const account = this.state.accounts[key] || values;
-    this.updateSavedAccount(key, { readOnly: true, buttonText: 'Edit' });
     this.data.set(key, values);
   }
 
@@ -97,7 +101,7 @@ class App extends Component {
           accounts={ this.state.accounts } 
           handleInputChange={ this.updateSavedAccount } 
           updateAccount={ this.updateSavedAccount }
-          saveAccount={ this.saveAccountToStorage }
+          saveAccount={ this.saveSavedAccount }
         />
       </div>
     );

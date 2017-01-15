@@ -16,6 +16,7 @@ class NewAccount extends Component {
   saveFields = (e) => {
     e.preventDefault();
     this.props.saveNewAccount(this.props.values.key);
+    // this.form.reset();
   }
 
   render = () => {
