@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AccountsList from './components/AccountsList';
-import NewAccount from './components/NewAccount';
 import DataAdapter from './DataAdapter';
 import shortid from 'shortid';
 import './App.css';
@@ -95,11 +94,13 @@ class App extends Component {
         <div className="App-header">
           <h2>PassKeeper Thingy</h2>
         </div>
-        <NewAccount saveNewAccount={ this.saveNewAccount } updateNewAccount={ this.updateNewAccount } values={ this.state.newAccount }/>
         <AccountsList 
           accounts={ this.state.accounts } 
           updateSavedAccount={ this.updateSavedAccount } 
-          saveAccount={ this.saveAccountToStorage }
+          saveSavedAccount={ this.saveAccountToStorage }
+          newAccountValues={ this.state.newAccount }
+          saveNewAccount={ this.saveNewAccount } 
+          updateNewAccount={ this.updateNewAccount } 
         />
       </div>
     );

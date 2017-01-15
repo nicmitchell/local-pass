@@ -26,7 +26,7 @@ class SavedAccount extends Component {
 
   saveFields = (key) => {
     this.setState({ readOnly: true, buttonText: 'Edit' });
-    this.props.saveAccount(key);
+    this.props.saveSavedAccount(key);
   }
 
   updateSavedAccount = (key, values) => {
@@ -35,17 +35,16 @@ class SavedAccount extends Component {
 
   render = () => {
     return (
-      <Form horizontal className="account-card" ref={ (form) => this.form = form }>
+      <Form horizontal className="account-card" ref={ (form) => this.form = form } onSubmit={ (e) => this.toggleButton(e) } >
         <AccountForm
           values={ this.props.values } 
           key={ this.props.idx } 
           idx={ this.props.idx } 
-          ref={ (form) => this.form = form }
           update={ this.updateSavedAccount }
           showCopyButton={ true }
           readOnly={ this.state.readOnly }
         />
-        <Button block bsStyle="primary" type="submit" name={ this.props.idx } onClick={ (e) => this.toggleButton(e) } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
+        <Button block bsStyle="primary" type="submit" name={ this.props.idx } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
       </Form>
     )
   }

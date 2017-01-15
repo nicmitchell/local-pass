@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Grid } from 'react-bootstrap';
+import NewAccount from './NewAccount';
 import SavedAccount from './SavedAccount';
 
 class AccountsList extends Component {
@@ -7,6 +8,7 @@ class AccountsList extends Component {
     return (
       <Grid>
         <Row className="account-list">
+          <NewAccount saveNewAccount={ this.props.saveNewAccount } updateNewAccount={ this.props.updateNewAccount } values={ this.props.newAccountValues }/>
           {
             Object
               .keys(this.props.accounts)
@@ -17,8 +19,7 @@ class AccountsList extends Component {
                     idx={ key }
                     values={ this.props.accounts[key] } 
                     updateSavedAccount={ this.props.updateSavedAccount }
-                    updateAccount={ this.props.updateAccount }
-                    saveAccount={ this.props.saveAccount }
+                    saveSavedAccount={ this.props.saveSavedAccount }
                   />
                 )
               })
