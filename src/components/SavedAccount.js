@@ -13,7 +13,7 @@ class SavedAccount extends Component {
 
   toggleButton = (e) => {
     e.preventDefault();
-    if (this.props.values.readOnly) {
+    if (this.state.readOnly) {
       this.editFields(this.props.idx);
     } else {
       this.saveFields(this.props.idx);
@@ -21,15 +21,16 @@ class SavedAccount extends Component {
   }
 
   editFields = (key) => {
-    this.props.updateAccount(key, { readOnly: false, buttonText: 'Save' });
+    this.setState({ readOnly: false, buttonText: 'Save' });
   }
 
   saveFields = (key) => {
-    this.props.saveAccount(key, { readOnly: true, buttonText: 'Edit' });
+    this.setState({ readOnly: true, buttonText: 'Edit' });
+    this.props.saveAccount(key);
   }
 
-  handleInputChange = (key, values) => {
-    this.props.handleInputChange(key, values);
+  updateSavedAccount = (key, values) => {
+    this.props.updateSavedAccount(key, values);
   }
 
   render = () => {
@@ -40,10 +41,11 @@ class SavedAccount extends Component {
           key={ this.props.idx } 
           idx={ this.props.idx } 
           ref={ (form) => this.form = form }
-          handleInputChange={ this.handleInputChange }
+          update={ this.updateSavedAccount }
           showCopyButton={ true }
+          readOnly={ this.state.readOnly }
         />
-        <Button block bsStyle="primary" type="submit" name={ this.props.idx } onClick={ (e) => this.toggleButton(e) } ref={ (button) => this.button = button }>{ this.props.values.buttonText }</Button>
+        <Button block bsStyle="primary" type="submit" name={ this.props.idx } onClick={ (e) => this.toggleButton(e) } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
       </Form>
     )
   }

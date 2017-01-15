@@ -56,7 +56,7 @@ class FormFieldGroup extends Component {
     const value = e.target.value;
     const input = e.target.id;
     const key = this.props.values.key;
-    this.props.handleInputChange(key, { [input]: value });
+    this.props.update(key, { [input]: value });
   }
 
   render = () => {
@@ -69,7 +69,7 @@ class FormFieldGroup extends Component {
             value={ this.props.values[name] } 
             onClick={ (e) => this.select(e) }
             onChange={ (e) => this.update(e) }
-            readOnly={ this.props.values.readOnly }
+            readOnly={ this.props.readOnly }
             { ...this.props.field }
           />
           { this.props.showCopyButton  && <InputGroup.Addon onClick={ (e) => this.copy(e, this[name]) } ref={ (button) => this.copyButton = button }>{ this.state.copyText }</InputGroup.Addon> }

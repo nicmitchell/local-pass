@@ -15,8 +15,9 @@ class AccountForm extends Component {
                 key={ field.id }
                 field={ field }
                 values={ this.props.values }
-                handleInputChange={ this.props.handleInputChange }
+                update={ this.props.update }
                 showCopyButton={ this.props.showCopyButton }
+                readOnly={ this.props.readOnly }
               />
             )
           })
