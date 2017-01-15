@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AccountsList from './components/AccountsList';
+import FormFields from './components/FormFields';
 import DataAdapter from './DataAdapter';
 import shortid from 'shortid';
 import './App.css';
@@ -11,19 +12,16 @@ class App extends Component {
     this.data = new DataAdapter();
     this.state = {
       accounts: {},
-      newAccount: {
-        key: shortid.generate()
-      }
+      newAccount: {}
       // Example account:
       // {
       //  key: 'aasdfuiop'
       //  account: 'Faceyspace',
       //  email: 'the@thing.com',
       //  password: 'badpass',
-      //  username: 'thingy',
-      //  readOnly: boolean,
-      //  buttonText: Save || Edit
+      //  username: 'thingy'
       // }
+      // 
     };
   }
 
@@ -34,14 +32,15 @@ class App extends Component {
       accounts[key].buttonText = 'Edit';
     })
     this.setState({ accounts });
+    this.resetNewAccount();
   }
 
   resetNewAccount = () => {
-    this.setState({
-      newAccount: {
-        key: shortid.generate()
-      }
-    })
+    const newAccount = FormFields.reduce((acc, field) => {
+      return Object.assign(acc, { [field.id]: '' });
+    }, {})
+    newAccount.key = shortid.generate();
+    this.setState({ newAccount });
   }
 
   addNewAccountToState = (key) => {

@@ -20,6 +20,7 @@ class NewAccount extends Component {
           key={ this.props.idx } 
           idx={ this.props.idx } 
           update={ this.update }
+          showCopyButton={ false }
         />
         <Button block bsStyle="primary" type="submit" ref={ (button) => this.button = button }>Save</Button>
       </Form>
