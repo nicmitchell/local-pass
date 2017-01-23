@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import AccountsList from './components/AccountsList';
-import FormFields from './helpers/FormFields';
-import DataAdapter from './helpers/DataAdapter';
+import AccountGrid from './AccountGrid';
+import FormFields from '../data/FormFields';
+import DataAdapter from '../helpers/DataAdapter';
+import { Provider } from 'react-redux';
 import shortid from 'shortid';
 import './App.css';
 
@@ -93,7 +94,7 @@ class App extends Component {
         <div className="App-header">
           <h2>PassKeeper Thingy</h2>
         </div>
-        <AccountsList 
+        <AccountGrid 
           accounts={ this.state.accounts } 
           updateSavedAccount={ this.updateSavedAccount } 
           saveSavedAccount={ this.saveAccountToStorage }

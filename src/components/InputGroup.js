@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormControl, FormGroup, InputGroup } from 'react-bootstrap';
 
-class FormFieldGroup extends Component {
+class Inputs extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -79,4 +79,4 @@ class FormFieldGroup extends Component {
   }
 }
 
-export default FormFieldGroup;
+export default Inputs;

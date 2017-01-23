@@ -3,7 +3,7 @@ import { Row, Grid } from 'react-bootstrap';
 import NewAccount from './NewAccount';
 import SavedAccount from './SavedAccount';
 
-class AccountsList extends Component {
+class AccountGrid extends Component {
   render = () => {
     return (
       <Grid>
@@ -30,4 +30,4 @@ class AccountsList extends Component {
   }
 }
 
-export default AccountsList;
+export default AccountGrid;

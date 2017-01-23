@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Col, Form, Button } from 'react-bootstrap';
 import AccountForm from './AccountForm';
 
 class SavedAccount extends Component {
@@ -35,6 +35,7 @@ class SavedAccount extends Component {
 
   render = () => {
     return (
+      <Col md={3}>
       <Form className="account-card" ref={ (form) => this.form = form } onSubmit={ (e) => this.toggleButton(e) } >
         <AccountForm
           values={ this.props.values } 
@@ -46,6 +47,7 @@ class SavedAccount extends Component {
         />
         <Button block bsStyle="primary" type="submit" name={ this.props.idx } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
       </Form>
+      </Col>
     )
   }
 }

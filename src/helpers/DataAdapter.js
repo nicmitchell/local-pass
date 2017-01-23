@@ -1,4 +1,4 @@
-import sampleData from './sample-data.js';
+import sampleData from '../data/sample-data.js';
 // import localforage from 'localforage';
 
 class DataAdapter {

@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import App from './components/App';
+import Settings from './components/Settings';
+import AccountGrid from './components/AccountGrid';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+const router = (
+  <Router history={browserHistory}>
+    <Route path="/" component={ App }>
+      <IndexRoute component={ AccountGrid }></IndexRoute>
+      <Route path="/settings" component={ Settings }></Route>
+    </Route>
+  </Router>
+)
+
+ReactDOM.render(router, document.getElementById('root'));
