@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import AccountGrid from './AccountGrid';
 import FormFields from '../data/FormFields';
 import DataAdapter from '../helpers/DataAdapter';
-import { Provider } from 'react-redux';
 import shortid from 'shortid';
-import './App.css';
+import './style.css';
 
 
 class App extends Component {
@@ -94,17 +92,18 @@ class App extends Component {
         <div className="App-header">
           <h2>PassKeeper Thingy</h2>
         </div>
-        <AccountGrid 
-          accounts={ this.state.accounts } 
-          updateSavedAccount={ this.updateSavedAccount } 
-          saveSavedAccount={ this.saveAccountToStorage }
-          newAccountValues={ this.state.newAccount }
-          saveNewAccount={ this.saveNewAccount } 
-          updateNewAccount={ this.updateNewAccount } 
-        />
+        { React.cloneElement(this.props.children, this.props) }
       </div>
     );
   }
 }
+// <AccountGrid 
+//   accounts={ this.state.accounts } 
+//   updateSavedAccount={ this.updateSavedAccount } 
+//   saveSavedAccount={ this.saveAccountToStorage }
+//   newAccountValues={ this.state.newAccount }
+//   saveNewAccount={ this.saveNewAccount } 
+//   updateNewAccount={ this.updateNewAccount } 
+// />
 
 export default App;

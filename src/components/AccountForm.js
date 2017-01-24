@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import InputGroup from './InputGroup';
+import Inputs from './Inputs';
 import FormFields from '../data/FormFields';
-import store from '../store';
 
 class AccountForm extends Component {
   render = () => {
@@ -10,7 +9,7 @@ class AccountForm extends Component {
         {
           FormFields.map((field) => {
             return (
-              <InputGroup 
+              <Inputs 
                 key={ field.id }
                 field={ field }
                 values={ this.props.values }

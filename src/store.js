@@ -1,16 +1,14 @@
-import { createStore, compose } from 'redux';
+import { createStore } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
-import rootReducer from './reducers/accounts';
-import data from './data/sample-data';
+import rootReducer from './reducers/root';
+import accounts from './data/sample-data';
 
-const defaultState = {
-  entree: data.entree,
-  light: data.light,
-  dessert: data.dessert
-};
+// const defaultState = {
+//   accounts
+// };
 
-export const store = createStore(rootReducer, defaultState);
+const store = createStore(rootReducer, { accounts });
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

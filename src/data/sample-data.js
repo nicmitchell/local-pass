@@ -1,4 +1,4 @@
-module.exports = {
+const accounts = {
   'Google': {
     key: 'Google',
     account: 'Google',
@@ -35,3 +35,5 @@ module.exports = {
     password: 'terriblepassword'
   } 
 };
+
+export default accounts;

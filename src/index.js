@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import App from './components/App';
+
+//Router
+import { Router, Route, IndexRoute } from 'react-router';
+import { Provider } from 'react-redux';
+import store, { history } from './store';
+
+// Components
+import Connect from './components/Connect';
 import Settings from './components/Settings';
 import AccountGrid from './components/AccountGrid';
 
 const router = (
-  <Router history={browserHistory}>
-    <Route path="/" component={ App }>
-      <IndexRoute component={ AccountGrid }></IndexRoute>
-      <Route path="/settings" component={ Settings }></Route>
-    </Route>
-  </Router>
+  <Provider store={ store }>
+    <Router history={ history }>
+      <Route path="/" component={ Connect }>
+        <IndexRoute component={ AccountGrid }></IndexRoute>
+        <Route path="/settings" component={ Settings }></Route>
+      </Route>
+    </Router>
+  </Provider>
 )
 
 ReactDOM.render(router, document.getElementById('root'));

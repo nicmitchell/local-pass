@@ -3,12 +3,12 @@ import { Row, Grid } from 'react-bootstrap';
 import NewAccount from './NewAccount';
 import SavedAccount from './SavedAccount';
 
+          // <NewAccount saveNewAccount={ this.props.saveNewAccount } updateNewAccount={ this.props.updateNewAccount } values={ this.props.newAccountValues }/>
 class AccountGrid extends Component {
   render = () => {
     return (
       <Grid>
         <Row className="account-list">
-          <NewAccount saveNewAccount={ this.props.saveNewAccount } updateNewAccount={ this.props.updateNewAccount } values={ this.props.newAccountValues }/>
           {
             Object
               .keys(this.props.accounts)
