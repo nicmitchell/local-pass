@@ -1,22 +1,21 @@
-export function addAccount({key, account, email, username, password, notes}) {
-  return {
+export function addAccount(values) { // {account, email, username, password, notes}
+  return { 
     type: 'ADD_ACCOUNT',
-    key,
-    account,
-    email,
-    username,
-    password,
+    values
   }
 }
 
-export function updateAccount({key, account, email, username, password, notes}) {
+export function updateSavedAccount(values) { // {key, account, email, username, password, notes}
   return {
-    type: 'ADD_ACCOUNT',
-    key,
-    account,
-    email,
-    username,
-    password,
+    type: 'UPDATE_SAVED_ACCOUNT',
+    ...values
+  }
+}
+
+export function saveSavedAccount(key) { //
+  return {
+    type: 'SAVE_SAVED_ACCOUNT',
+    key
   }
 }
 

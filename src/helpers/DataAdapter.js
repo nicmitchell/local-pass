@@ -1,5 +1,4 @@
 import sampleData from '../data/sample-data.js';
-// import localforage from 'localforage';
 
 class DataAdapter {
   constructor() {
@@ -7,8 +6,9 @@ class DataAdapter {
   }
 
   exportToLocalStorage = (data) => {
-    Object.keys(data).forEach((account) => {
-      localStorage.setItem(account, JSON.stringify(data[account]));
+    Object.keys(data).forEach((key) => {
+      localStorage.setItem(key, JSON.stringify(data[key]));
+      this.data[key] = data[key];
     })
   }
 
@@ -33,20 +33,25 @@ class DataAdapter {
     });
   }
 
-  getAccounts = () => {
+  getAccounts() {
     if (!localStorage.length) {
       this.exportToLocalStorage(sampleData);
+    } else {
+      this.loadFromLocalStorage();
     }
-    this.loadFromLocalStorage();
     return this.data;
   }
 
-  set = (key, data) => {
+  set(key, data) {
     return localStorage.setItem(key.toString(), JSON.stringify(data));
   }
 
-  get = (key) => {
+  get(key) {
     return JSON.parse(localStorage.getItem(key));
+  }
+
+  remove(key) {
+    return localStorage.removeItem(key);
   }
 }
 

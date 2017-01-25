@@ -29,8 +29,8 @@ class SavedAccount extends Component {
     this.props.saveSavedAccount(key);
   }
 
-  updateSavedAccount = (key, values) => {
-    this.props.updateSavedAccount(key, values);
+  updateSavedAccount = (values) => {
+    this.props.updateSavedAccount(values);
   }
 
   render = () => {

@@ -56,7 +56,7 @@ class Inputs extends Component {
     const value = e.target.value;
     const input = e.target.id;
     const key = this.props.values.key;
-    this.props.update(key, { [input]: value });
+    this.props.update({key: key, values: { [input]: value }});
   }
 
   render = () => {
@@ -66,7 +66,7 @@ class Inputs extends Component {
         <InputGroup bsSize="small">
           <FormControl
             inputRef={ (ref) => this[name] = ref } 
-            value={ this.props.values[name] } 
+            defaultValue={ this.props.values[name] } 
             onClick={ (e) => this.select(e) }
             onChange={ (e) => this.update(e) }
             readOnly={ this.props.readOnly }

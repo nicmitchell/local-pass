@@ -13,11 +13,19 @@ class NewAccount extends Component {
   }
 
   render = () => {
+    const values = {
+      key: '',
+      account: '',
+      email: '',
+      password: '',
+      username: ''
+    };
     return (
       <Col md={3}>
       <Form className="account-card new" ref={ (form) => this.form = form } onSubmit={ (e) => this.saveFields(e) }>
         <AccountForm
-          values={ this.props.values } 
+          // values={ this.props.values } 
+          values={ values } 
           key={ this.props.idx } 
           idx={ this.props.idx } 
           update={ this.update }
