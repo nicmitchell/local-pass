@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     id: "account",
     type: "text",
@@ -27,3 +27,14 @@ module.exports = [
     componentClass: "textarea"
   }
 ];
+
+export function newAccountValues() {
+  return {
+    key: 'newAccount',
+    account: '',
+    email: '',
+    username: '',
+    password: '',
+    notes: ''
+  };
+}

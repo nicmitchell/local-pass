@@ -1,20 +1,26 @@
 import shortid from 'shortid';
 import Data from '../helpers/DataAdapter';
+import { newAccountValues } from '../helpers/FormFields';
 const data = new Data();
 
 function accounts(state = {}, { type, key, values }) {
   console.log(...arguments);
-  console.log('type', type, 'key', key, 'values', values);
   switch(type) {
-    case 'ADD_ACCOUNT' :
-      console.log('Adding account:', values);
+    case 'SAVE_NEW_ACCOUNT' :
+      console.log('newAccountValues', newAccountValues());
+      console.log('Saving new account:', values);
       const newKey = shortid.generate();
-      state[newKey] = values;
-      return state;
+      const newAccount = Object.assign({}, state.newAccount, { key: newKey });
+      data.set(newKey, newAccount);
+      return Object.assign(state, { [newKey]: newAccount }, { newAccount: newAccountValues() });
+    case 'UPDATE_NEW_ACCOUNT' :
+      if (key === 'newAccount') {
+        const updatedNewAccount = Object.assign({}, state.newAccount, values);
+        return Object.assign({}, state, { newAccount: updatedNewAccount });
+      }
     case 'UPDATE_SAVED_ACCOUNT' :
       console.log('Updating account:', values);
-      Object.assign(state[key], values);
-      return state;
+      return Object.assign({}, state[key], values);
     case 'SAVE_SAVED_ACCOUNT' :
       console.log('Saving account to localStorage key', key);
       console.log('State', state);

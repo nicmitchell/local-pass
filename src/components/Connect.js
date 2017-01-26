@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../actions/actionCreators';
 import App from './App';
 
-function mapStateToProps(state) {
+function mapStateToProps({ accounts, newAccount }) {
   return {
-    accounts: state.accounts
+    accounts,
+    newAccount
   };
 }
 

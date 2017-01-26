@@ -1,7 +1,14 @@
-export function addAccount(values) { // {account, email, username, password, notes}
+export function saveNewAccount(values) { // {account, email, username, password, notes}
   return { 
-    type: 'ADD_ACCOUNT',
-    values
+    type: 'SAVE_NEW_ACCOUNT'
+  }
+}
+
+export function updateNewAccount(values) {
+  console.log('values in action creators', values);
+  return {
+    type: 'UPDATE_NEW_ACCOUNT',
+    ...values
   }
 }
 

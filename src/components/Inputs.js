@@ -56,13 +56,14 @@ class Inputs extends Component {
     const value = e.target.value;
     const input = e.target.id;
     const key = this.props.values.key;
-    this.props.update({key: key, values: { [input]: value }});
+    this.props.update({ key: key, values: { [input]: value } });
   }
 
   render = () => {
+    // console.log(this.props);
     const name = this.props.field.id;
     return (
-      <FormGroup validationState={ this.state.copyState } key={ `${this.props.values.key}-${name}` }>
+      <FormGroup validationState={ this.state.copyState } key={ this.props.idx }>
         <InputGroup bsSize="small">
           <FormControl
             inputRef={ (ref) => this[name] = ref } 

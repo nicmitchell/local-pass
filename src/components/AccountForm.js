@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Inputs from './Inputs';
-import FormFields from '../data/FormFields';
+import FormFields from '../helpers/FormFields';
 
 class AccountForm extends Component {
   render = () => {

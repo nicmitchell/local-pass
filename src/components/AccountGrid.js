@@ -5,15 +5,21 @@ import SavedAccount from './SavedAccount';
 
 class AccountGrid extends Component {
   render = () => {
+    console.log('grid values', this.props);
     return (
       <Grid>
         <Row className="account-list">
-          <NewAccount saveNewAccount={ this.props.saveNewAccount } updateNewAccount={ this.props.updateNewAccount } values={ this.props.newAccountValues }/>
+          <NewAccount 
+            saveNewAccount={ this.props.saveNewAccount } 
+            updateNewAccount={ this.props.updateNewAccount } 
+            addNewAccount={ this.props.addNewAccount } 
+            values={ this.props.accounts.newAccount }
+          />
           {
             Object
               .keys(this.props.accounts)
               .map((key, i) => {
-                return (
+                return ( key !== 'newAccount' &&
                   <SavedAccount 
                     key={ key }
                     idx={ key }

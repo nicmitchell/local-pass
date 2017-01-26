@@ -3,29 +3,26 @@ import { Col, Form, Button } from 'react-bootstrap';
 import AccountForm from './AccountForm';
 
 class NewAccount extends Component {
-  update = (key, values) => {
-    this.props.updateNewAccount(key, values);
+  update = (values) => {
+    console.log('values in new account update', values);
+    this.props.updateNewAccount(Object.assign(values, { key: 'newAccount' }));
   }
 
-  saveFields = (e) => {
+  // updateSavedAccount = (values) => {
+  //   this.props.updateSavedAccount(values);
+  // }
+
+  saveNewAccount = (e) => {
     e.preventDefault();
-    this.props.saveNewAccount(this.props.values.key);
+    this.props.saveNewAccount();
   }
 
   render = () => {
-    const values = {
-      key: '',
-      account: '',
-      email: '',
-      password: '',
-      username: ''
-    };
     return (
       <Col md={3}>
-      <Form className="account-card new" ref={ (form) => this.form = form } onSubmit={ (e) => this.saveFields(e) }>
+      <Form className="account-card new" ref={ (form) => this.form = form } onSubmit={ (e) => this.saveNewAccount(e) }>
         <AccountForm
-          // values={ this.props.values } 
-          values={ values } 
+          values={ this.props.values } 
           key={ this.props.idx } 
           idx={ this.props.idx } 
           update={ this.update }
