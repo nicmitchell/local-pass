@@ -27,8 +27,7 @@ function accounts(state = {}, { type, key, values }) {
       return state;
     case 'REMOVE_ACCOUNT' :
       data.remove(key);
-      delete state[key];
-      return Object.assign({}, state)
+      return removeAccount(state, key);
     default:
       return state;
   }
@@ -55,6 +54,12 @@ function updateSavedAccount(state, values) {
     ...state, 
     ...values
   }
+}
+
+function removeAccount(state, key) {
+  const newState = Object.assign({}, state);
+  delete newState[key];
+  return newState;
 }
 
 export default accounts;

@@ -47,6 +47,7 @@ class SavedAccount extends Component {
         />
         <Button block bsStyle="primary" type="submit" name={ this.props.idx } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
       </Form>
+      <Button bsSize="xsmall" bsStyle="danger" className="delete" onClick={ (e) => this.props.removeAccount(this.props.idx) }>&times; Delete</Button>
       </Col>
     )
   }

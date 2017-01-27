@@ -54,3 +54,11 @@ label {
 .account-card.new span.input-group.input-group-sm {
   display: block;
 }
+
+button.delete {
+  float: right;
+  position: relative;
+  right: 5px;
+  top: -5px;
+  border-radius: 0px;
+}

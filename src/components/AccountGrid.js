@@ -26,6 +26,7 @@ class AccountGrid extends Component {
                     values={ this.props.accounts[key] } 
                     updateSavedAccount={ this.props.updateSavedAccount }
                     saveSavedAccount={ this.props.saveSavedAccount }
+                    removeAccount={ this.props.removeAccount }
                   />
                 )
               })
