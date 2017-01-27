@@ -18,7 +18,10 @@ function accounts(state = {}, { type, key, values }) {
         newAccount: updateNewAccount(state.newAccount, values)
       }
     case 'UPDATE_SAVED_ACCOUNT' :
-      return updateSavedAccount(state, key, values);
+      return {
+        ...state,
+        [key]: updateSavedAccount(state[key], values)
+      }
     case 'SAVE_SAVED_ACCOUNT' :
       data.set(key, state[key]);
       return state;
@@ -47,10 +50,10 @@ function updateNewAccount(newAccount, values) {
   }
 }
 
-function updateSavedAccount(state, key, values) {
+function updateSavedAccount(state, values) {
   return { 
     ...state, 
-    [state[key]]: values
+    ...values
   }
 }
 
