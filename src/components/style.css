@@ -43,12 +43,18 @@ label {
   border-left: 1px solid rgba(0,0,0,0.1);
   float: left;
 }
-.new {
-  width: 96%
+.new-account .cancel {
+  text-align: center;
+  color: #d9534f;
+  margin: 0 auto;
+  display: block;
 }
 
-.new .input-group-addon {
-  display: none;
+.new-account-button {
+  border-radius: 50%;
+  position: fixed;
+  right: 0;
+  bottom: 0;
 }
 
 .account-card-wrapper {

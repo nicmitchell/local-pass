@@ -8,13 +8,6 @@ class AccountGrid extends Component {
     return (
       <Grid>
         <Row className="account-list">
-          <NewAccount 
-            saveNewAccount={ this.props.saveNewAccount } 
-            updateNewAccount={ this.props.updateNewAccount } 
-            addNewAccount={ this.props.addNewAccount } 
-            values={ this.props.accounts.newAccount }
-            store={ this.props.store }
-          />
           {
             Object
               .keys(this.props.accounts)
@@ -32,9 +25,16 @@ class AccountGrid extends Component {
               })
           }
         </Row>
+        <NewAccount { ...this.props }/>
       </Grid>
     )
   }
 }
 
 export default AccountGrid;
+// <NewAccount 
+//   saveNewAccount={ this.props.saveNewAccount } 
+//   updateNewAccount={ this.props.updateNewAccount } 
+//   addNewAccount={ this.props.addNewAccount } 
+//   values={ this.props.accounts.newAccount }
+// />

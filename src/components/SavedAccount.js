@@ -67,7 +67,7 @@ class SavedAccount extends Component {
             bsStyle="danger" 
             className="delete" 
             onClick={ (e) => this.openModal() }
-          >&times; Delete</Button>
+          >&times;</Button>
         </Col>
         <DeleteModal 
           show={ this.state.showModal } 

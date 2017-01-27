@@ -11,7 +11,7 @@ class DeleteModal extends Component {
   render() {
     return (
       <Modal show={ this.props.show } bsSize="small" onKeyUp={ (e) => this.handleKeyPress(e) }>
-        <Modal.Header closeButton ><h4>Are you sure?</h4></Modal.Header>
+        <Modal.Header><h4>Are you sure?</h4></Modal.Header>
         <Modal.Body>You are about to delete the credentials for { this.props.account }. Are you sure you want to do this?</Modal.Body>
         <Modal.Footer>
           <Button bsStyle="default" onClick={ this.props.onHide }>Cancel</Button>
