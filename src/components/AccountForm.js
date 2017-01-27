@@ -14,7 +14,6 @@ class AccountForm extends Component {
                 field={ field }
                 values={ this.props.values }
                 update={ this.props.update }
-                showCopyButton={ this.props.showCopyButton }
                 readOnly={ this.props.readOnly }
               />
             )

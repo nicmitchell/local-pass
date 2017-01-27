@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Col, Form, Button } from 'react-bootstrap';
 import AccountForm from './AccountForm';
+import DeleteModal from './DeleteModal';
 
 class SavedAccount extends Component {
   constructor(props) {
     super(props);
     this.state = { 
       readOnly: true,
-      buttonText: 'Edit'
+      buttonText: 'Edit',
+      showModal: false
     };
   }
 
@@ -33,22 +35,52 @@ class SavedAccount extends Component {
     this.props.updateSavedAccount(values);
   }
 
+  removeAccount = (idx) => {
+    this.props.removeAccount(idx);
+  }
+
+  openModal = () => {
+    this.setState({ showModal: true });
+  }
+
+  closeModal = () => {
+    this.setState({ showModal: false });
+  }
+
+  button = () => {
+    return (<Button block bsStyle="primary" type="submit" name={ this.props.idx } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>);
+  }
+
   render = () => {
     return (
-      <Col md={3}>
-      <Form className="account-card" ref={ (form) => this.form = form } onSubmit={ (e) => this.toggleButton(e) } >
-        <AccountForm
-          values={ this.props.values } 
-          key={ this.props.idx } 
-          idx={ this.props.idx } 
-          update={ this.updateSavedAccount }
-          showCopyButton={ true }
-          readOnly={ this.state.readOnly }
+      <div>
+        <Col md={3} className="account-card-wrapper">
+          <Form className="account-card" ref={ (form) => this.form = form } onSubmit={ (e) => this.toggleButton(e) } >
+            <AccountForm
+              values={ this.props.values } 
+              key={ this.props.idx } 
+              idx={ this.props.idx } 
+              update={ this.updateSavedAccount }
+              readOnly={ this.state.readOnly }
+              buttonProps={ this.buttonProps }
+            />
+            <Button block bsStyle="primary" type="submit" name={ this.props.idx } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
+          </Form>
+          <Button 
+            bsSize="xsmall" 
+            bsStyle="danger" 
+            className="delete" 
+            onClick={ (e) => this.openModal() }
+          >&times; Delete</Button>
+        </Col>
+        <DeleteModal 
+          show={ this.state.showModal } 
+          onHide={ this.closeModal } 
+          account={ this.props.values.account } 
+          idx={ this.props.idx }
+          removeAccount={ this.removeAccount } 
         />
-        <Button block bsStyle="primary" type="submit" name={ this.props.idx } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
-      </Form>
-      <Button bsSize="xsmall" bsStyle="danger" className="delete" onClick={ (e) => this.props.removeAccount(this.props.idx) }>&times; Delete</Button>
-      </Col>
+      </div>
     )
   }
 }

@@ -51,6 +51,10 @@ label {
   display: none;
 }
 
+.account-card-wrapper {
+  margin-bottom: 2rem;
+}
+
 .account-card.new span.input-group.input-group-sm {
   display: block;
 }
