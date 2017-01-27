@@ -47,10 +47,6 @@ class SavedAccount extends Component {
     this.setState({ showModal: false });
   }
 
-  button = () => {
-    return (<Button block bsStyle="primary" type="submit" name={ this.props.idx } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>);
-  }
-
   render = () => {
     return (
       <div>
