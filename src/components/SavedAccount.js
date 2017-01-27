@@ -61,13 +61,8 @@ class SavedAccount extends Component {
               buttonProps={ this.buttonProps }
             />
             <Button block bsStyle="primary" type="submit" name={ this.props.idx } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
+            <Button bsStyle="link" className="delete" bsSize="small" onClick={ (e) => this.openModal() }>Delete</Button>
           </Form>
-          <Button 
-            bsSize="xsmall" 
-            bsStyle="danger" 
-            className="delete" 
-            onClick={ (e) => this.openModal() }
-          >&times;</Button>
         </Col>
         <DeleteModal 
           show={ this.state.showModal } 

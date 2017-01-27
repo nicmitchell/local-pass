@@ -33,6 +33,10 @@ label {
   color: #000;
 }
 
+.account-card-wrapper {
+  margin-bottom: 2rem;
+}
+
 .account-card {
   border-right: 1px solid rgba(0,0,0,0.2);
   box-shadow: 1px 1px 0px rgba(0,0,0,0.1);
@@ -43,7 +47,8 @@ label {
   border-left: 1px solid rgba(0,0,0,0.1);
   float: left;
 }
-.new-account .cancel {
+
+.new-account .cancel, .account-card .delete {
   text-align: center;
   color: #d9534f;
   margin: 0 auto;
@@ -51,24 +56,24 @@ label {
 }
 
 .new-account-button {
-  border-radius: 50%;
+  border-radius: 0;
   position: fixed;
-  right: 0;
-  bottom: 0;
+  right: 2rem;
+  bottom: 2rem;
+  height: 5rem;
+  width: 5rem;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 0rem;
+  padding-top: 0.5rem;
+  box-shadow: 2px 2px 0px 1px rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  outline: none;
 }
 
-.account-card-wrapper {
-  margin-bottom: 2rem;
+.new-account-button:focus {
+  outline: none;
 }
 
-.account-card.new span.input-group.input-group-sm {
-  display: block;
-}
 
-button.delete {
-  float: right;
-  position: relative;
-  right: 5px;
-  top: -5px;
-  border-radius: 0px;
-}

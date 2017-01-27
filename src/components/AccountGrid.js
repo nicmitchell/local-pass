@@ -32,9 +32,3 @@ class AccountGrid extends Component {
 }
 
 export default AccountGrid;
-// <NewAccount 
-//   saveNewAccount={ this.props.saveNewAccount } 
-//   updateNewAccount={ this.props.updateNewAccount } 
-//   addNewAccount={ this.props.addNewAccount } 
-//   values={ this.props.accounts.newAccount }
-// />
