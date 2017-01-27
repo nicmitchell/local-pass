@@ -5,7 +5,6 @@ import SavedAccount from './SavedAccount';
 
 class AccountGrid extends Component {
   render = () => {
-    console.log('grid values', this.props);
     return (
       <Grid>
         <Row className="account-list">
@@ -14,6 +13,7 @@ class AccountGrid extends Component {
             updateNewAccount={ this.props.updateNewAccount } 
             addNewAccount={ this.props.addNewAccount } 
             values={ this.props.accounts.newAccount }
+            store={ this.props.store }
           />
           {
             Object

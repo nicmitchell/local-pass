@@ -60,7 +60,6 @@ class Inputs extends Component {
   }
 
   render = () => {
-    // console.log(this.props);
     const name = this.props.field.id;
     return (
       <FormGroup validationState={ this.state.copyState } key={ this.props.idx }>

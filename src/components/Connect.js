@@ -5,8 +5,7 @@ import App from './App';
 
 function mapStateToProps({ accounts, newAccount }) {
   return {
-    accounts,
-    newAccount
+    accounts
   };
 }
 

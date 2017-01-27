@@ -14,8 +14,8 @@ import AccountGrid from './components/AccountGrid';
 const router = (
   <Provider store={ store }>
     <Router history={ history }>
-      <Route path="/" component={ Connect }>
-        <IndexRoute component={ AccountGrid }></IndexRoute>
+      <Route path="/" component={ Connect } store={ store }>
+        <IndexRoute component={ AccountGrid } store={ store }></IndexRoute>
         <Route path="/settings" component={ Settings }></Route>
       </Route>
     </Router>

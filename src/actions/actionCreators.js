@@ -5,7 +5,6 @@ export function saveNewAccount(values) { // {account, email, username, password,
 }
 
 export function updateNewAccount(values) {
-  console.log('values in action creators', values);
   return {
     type: 'UPDATE_NEW_ACCOUNT',
     ...values
