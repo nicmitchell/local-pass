@@ -1,25 +1,51 @@
 .account-card-wrapper {
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .account-card {
-  background-color: #f4f4f4;
+  background-color: #f9f9f9;
   float: left;
   margin: 0.5rem;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   transform: translateY(0rem);
-  transition: box-shadow, transform 0.5s;
+  transition: all 0.5s;
 }
 
 .account-card:hover, .account-card.active {
-  box-shadow: 1rem 1rem 0.5rem rgba(0,0,0,0.1);
+  background-color: #eee;
+  box-shadow: 1rem 1rem 0.5rem rgba(0,0,0,0.15);
   transform: translateY(-0.5rem);
-  transition: box-shadow, transform 0.5s;
+  transition: all 0.5s;
 }
 
-.new-account .cancel, .account-card .delete {
-  text-align: center;
+.btn.delete {
+  background-color: #fff;
+  border: none;
   color: #d9534f;
+  display: block;
+  position: absolute;
+  right: 0px;
+  padding: 1rem;
+  height: 3rem;
+}
+
+.btn.delete.inactive {
+  top: 0;
+  box-shadow: 1rem 1rem 2px rgba(0,0,0,0);
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.btn.delete.active {
+  top: -3rem;
+  box-shadow: 1rem 1rem 0.5rem rgba(0,0,0,0.15);
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.new-account .cancel {
+  text-align: center;
   margin: 0 auto;
   display: block;
 }
@@ -43,7 +69,7 @@
 }
 
 .input-group-lg>.input-group-addon.copy {
-  font-size: x-small;
+  font-size: small;
   opacity: 0;
 }
 
@@ -94,16 +120,21 @@
   bottom: 2rem;
   height: 5rem;
   width: 5rem;
-  font-size: 3rem;
+  font-size: 5rem;
   text-align: center;
   line-height: 0rem;
-  padding-top: 0.5rem;
+  padding-top: 0.75rem;
   box-shadow: 2px 2px 0px 1px rgba(0,0,0,0.2);
-  border-right: 1px solid rgba(0,0,0,0.2);
-  border-bottom: 1px solid rgba(0,0,0,0.3);
   outline: none;
+}
+
+.new-account-button:before {
+  content: "+";
+  position: absolute;
+  left: 1.35rem;
 }
 
 .new-account-button:focus {
   outline: none;
+  border: none;
 }

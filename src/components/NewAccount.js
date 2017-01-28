@@ -53,7 +53,7 @@ class NewAccount extends Component {
             </Modal.Body>
           </form>
         </Modal>
-        <Button bsStyle="success" bsSize="large" className="new-account-button" onClick={ (e) => this.openModal() }>&#43;</Button>
+        <Button bsStyle="success" bsSize="large" className="new-account-button" onClick={ (e) => this.openModal() }></Button>
       </div>
     )
   }
