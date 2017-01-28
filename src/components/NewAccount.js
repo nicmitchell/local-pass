@@ -48,7 +48,7 @@ class NewAccount extends Component {
                 idx={ this.props.idx } 
                 update={ this.update }
               />
-              <Button block bsStyle="primary" type="submit" ref={ (button) => this.button = button }>Save</Button>
+              <Button block bsStyle="primary" type="submit" bsSize="large" ref={ (button) => this.button = button }>Save</Button>
               <Button bsStyle="link" className="cancel" bsSize="small" onClick={ this.closeModal }>Cancel</Button>
             </Modal.Body>
           </form>

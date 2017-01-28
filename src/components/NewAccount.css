@@ -1,0 +1,27 @@
+.new-account .cancel, .account-card .delete {
+  text-align: center;
+  color: #d9534f;
+  margin: 0 auto;
+  display: block;
+}
+
+.new-account-button {
+  border-radius: 0;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  height: 5rem;
+  width: 5rem;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 0rem;
+  padding-top: 0.5rem;
+  box-shadow: 2px 2px 0px 1px rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  outline: none;
+}
+
+.new-account-button:focus {
+  outline: none;
+}

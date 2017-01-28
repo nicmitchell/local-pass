@@ -61,9 +61,10 @@ class Inputs extends Component {
 
   render = () => {
     const name = this.props.field.id;
+    const active = this.props.readOnly ? 'inactive' : 'active';
     return (
       <FormGroup validationState={ this.state.copyState } key={ this.props.idx }>
-        <InputGroup bsSize="small">
+        <InputGroup bsSize="large" className={ active } >
           <FormControl
             inputRef={ (ref) => this[name] = ref } 
             defaultValue={ this.props.values[name] } 
@@ -72,7 +73,7 @@ class Inputs extends Component {
             readOnly={ this.props.readOnly }
             { ...this.props.field }
           />
-          <InputGroup.Addon onClick={ (e) => this.copy(e, this[name]) } ref={ (button) => this.copyButton = button }>{ this.state.copyText }</InputGroup.Addon>
+          <InputGroup.Addon className="copy" onClick={ (e) => this.copy(e, this[name]) } ref={ (button) => this.copyButton = button }>{ this.state.copyText }</InputGroup.Addon>
         </InputGroup>
       </FormGroup>
     )

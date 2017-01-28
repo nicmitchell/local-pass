@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Grid } from 'react-bootstrap';
 import NewAccount from './NewAccount';
 import SavedAccount from './SavedAccount';
+import './AccountGrid.css';
 
 class AccountGrid extends Component {
   render = () => {

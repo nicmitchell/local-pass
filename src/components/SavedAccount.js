@@ -48,22 +48,21 @@ class SavedAccount extends Component {
   }
 
   render = () => {
+    const buttonClass = this.state.readOnly ? 'inactive' : 'active';
     return (
-      <div>
-        <Col md={3} className="account-card-wrapper">
-          <Form className="account-card" ref={ (form) => this.form = form } onSubmit={ (e) => this.toggleButton(e) } >
-            <AccountForm
-              values={ this.props.values } 
-              key={ this.props.idx } 
-              idx={ this.props.idx } 
-              update={ this.updateSavedAccount }
-              readOnly={ this.state.readOnly }
-              buttonProps={ this.buttonProps }
-            />
-            <Button block bsStyle="primary" type="submit" name={ this.props.idx } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
-            <Button bsStyle="link" className="delete" bsSize="small" onClick={ (e) => this.openModal() }>Delete</Button>
-          </Form>
-        </Col>
+      <Col lg={3} md={4} sm={6} className="account-card-wrapper">
+        <Form className={`account-card ${ buttonClass }`} ref={ (form) => this.form = form } onSubmit={ (e) => this.toggleButton(e) } >
+          <AccountForm
+            values={ this.props.values } 
+            key={ this.props.idx } 
+            idx={ this.props.idx } 
+            update={ this.updateSavedAccount }
+            readOnly={ this.state.readOnly }
+            buttonProps={ this.buttonProps }
+          />
+          <Button block className={`edit ${ buttonClass }` } type="submit" bsSize="large" name={ this.props.idx } ref={ (button) => this.button = button }>{ this.state.buttonText }</Button>
+          <Button bsStyle="link" className="delete" bsSize="small" onClick={ (e) => this.openModal() }>Delete</Button>
+        </Form>
         <DeleteModal 
           show={ this.state.showModal } 
           onHide={ this.closeModal } 
@@ -71,7 +70,7 @@ class SavedAccount extends Component {
           idx={ this.props.idx }
           removeAccount={ this.removeAccount } 
         />
-      </div>
+      </Col>
     )
   }
 }

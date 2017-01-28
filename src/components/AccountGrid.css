@@ -1,0 +1,109 @@
+.account-card-wrapper {
+  margin-bottom: 2rem;
+}
+
+.account-card {
+  background-color: #f4f4f4;
+  float: left;
+  margin: 0.5rem;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  transform: translateY(0rem);
+  transition: box-shadow, transform 0.5s;
+}
+
+.account-card:hover, .account-card.active {
+  box-shadow: 1rem 1rem 0.5rem rgba(0,0,0,0.1);
+  transform: translateY(-0.5rem);
+  transition: box-shadow, transform 0.5s;
+}
+
+.new-account .cancel, .account-card .delete {
+  text-align: center;
+  color: #d9534f;
+  margin: 0 auto;
+  display: block;
+}
+
+.input-group.input-group-lg.active {
+  background-color: #fff;
+}
+
+.input-group.input-group-lg.inactive {
+  background-color: #f9f9f9;
+}
+
+.input-group.input-group-lg .copy.input-group-addon {
+  background-color: transparent;
+}
+
+.input-group-lg>.form-control, .input-group-lg>.input-group-addon, .input-group-lg>.input-group-btn>.btn {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.input-group-lg>.input-group-addon.copy {
+  font-size: x-small;
+  opacity: 0;
+}
+
+.input-group-lg>.input-group-addon.copy:hover {
+  opacity: 1;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background-color: #f9f9f9;
+  box-shadow: none;
+}
+
+.form-group {
+  margin-bottom: 1px;
+  border: 0;
+}
+
+.edit.inactive {
+  background-color: #f9f9f9;
+  box-shadow: inset 0 0 0 0 #31b0d5;
+  color: #31b0d5;
+  border: none;
+  transition: all 0.5s;
+}
+
+.edit.inactive:hover {
+  background-color: #fff;
+  box-shadow: inset 0 0 0 3px #31b0d5;
+  transition: all 0.5s;
+}
+
+.edit.active, .edit.active:focus {
+  color: #fff;
+  background-color: #31b0d5;
+  box-shadow: inset 0 0 0 0px #269abc;
+  border: none;
+  transition: all 0.5s;
+}
+
+.edit.active:hover {
+  
+}
+
+.new-account-button {
+  border-radius: 0;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  height: 5rem;
+  width: 5rem;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 0rem;
+  padding-top: 0.5rem;
+  box-shadow: 2px 2px 0px 1px rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  outline: none;
+}
+
+.new-account-button:focus {
+  outline: none;
+}

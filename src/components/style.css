@@ -1,79 +1,18 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  background: url('/images/pw_maze_white.png');
 }
 
-.App {
-  text-align: center;
+* {
+  border-radius: 0 !important;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+button.btn:focus {
+  outline: none !important;
 }
 
-.App-header {
-  background-color: #222;
-  height: 85px;
-  padding: 20px;
-  color: white;
+button.btn {
+  font-family: 'Jura', sans-serif;
 }
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-label {
-  color: #000;
-}
-
-.account-card-wrapper {
-  margin-bottom: 2rem;
-}
-
-.account-card {
-  border-right: 1px solid rgba(0,0,0,0.2);
-  box-shadow: 1px 1px 0px rgba(0,0,0,0.1);
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border-bottom: 1px solid rgba(0,0,0,0.3);
-  border-top: 1px solid rgba(0,0,0,0.1);
-  border-left: 1px solid rgba(0,0,0,0.1);
-  float: left;
-}
-
-.new-account .cancel, .account-card .delete {
-  text-align: center;
-  color: #d9534f;
-  margin: 0 auto;
-  display: block;
-}
-
-.new-account-button {
-  border-radius: 0;
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  height: 5rem;
-  width: 5rem;
-  font-size: 3rem;
-  text-align: center;
-  line-height: 0rem;
-  padding-top: 0.5rem;
-  box-shadow: 2px 2px 0px 1px rgba(0,0,0,0.2);
-  border-right: 1px solid rgba(0,0,0,0.2);
-  border-bottom: 1px solid rgba(0,0,0,0.3);
-  outline: none;
-}
-
-.new-account-button:focus {
-  outline: none;
-}
-
-
