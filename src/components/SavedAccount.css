@@ -1,0 +1,60 @@
+.btn.delete {
+  color: #d9534f;
+  vertical-align: top;
+  padding: 0.75rem;
+  background-color: #fff;
+  border: none;
+  display: block;
+  position: absolute;
+  right: 0px;
+  height: 3rem;
+}
+
+.btn.delete.inactive {
+  transform: translateY(0);
+  box-shadow: 1rem 1rem 2px rgba(0,0,0,0);
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.btn.delete.active {
+  transform: translateY(-3rem);
+  box-shadow: 1rem 1rem 0.5rem rgba(0,0,0,0.15);
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.btn.delete.active:focus {
+  background-color: #fff;
+  color: #d9534f;
+}
+
+.edit.inactive {
+  background-color: #f9f9f9;
+  box-shadow: inset 0 0 0 0 #31b0d5;
+  color: #31b0d5;
+  border: none;
+  transition: all 0.5s;
+}
+
+.edit.inactive:hover {
+  background-color: #fff;
+  box-shadow: inset 0 0 0 3px #31b0d5;
+  transition: all 0.5s;
+}
+
+.edit.active, .edit.active:focus {
+  color: #fff;
+  background-color: #269abc;
+  box-shadow: inset 0 0 0 0px #269abc;
+  border: none;
+  transition: background-color 0.5s, box-shadow 3s;
+}
+
+.edit.active:hover {
+  color: #fff;
+  background-color: #31b0d5;
+  box-shadow: inset 0 0 0 0px #269abc;
+  border: none;
+  transition: background-color 0.5s, box-shadow 3s;
+}

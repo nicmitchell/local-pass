@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Form, Button, Glyphicon } from 'react-bootstrap';
 import AccountForm from './AccountForm';
 import DeleteModal from './DeleteModal';
+import './SavedAccount.css';
 
 class SavedAccount extends Component {
   constructor(props) {
